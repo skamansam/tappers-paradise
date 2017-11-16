@@ -1,9 +1,9 @@
 # Tapper's Paradise
-Design your own tapper!
+Design your own Incremental ("Idle") Game!
 
 ## What is a Tapper?
 
-A Tapper is a game where you tap to get items. These are also called "Idle Games" or "Idle Strategy Games." You know the kind I am talking about - where you start off with a single item that generates resources which you then use to obtain more items that generate more resources. Once you build enough basic items, you can expand to new sections of the game where you can build new classes of items that may generate different resources. This can go on forever, but is usually limited to a set number of sections and items. They all follow this basic premise.
+A Tapper is a game where you tap to get items. These are also called "Idle Games" or "Idle Strategy Games." Wikipedia lists them as [_Incremental Games_](https://en.wikipedia.org/wiki/Incremental_game). You know the kind I am talking about - where you start off with a single item that generates resources which you then use to obtain more items that generate more resources. Once you build enough basic items, you can expand to new sections of the game where you can build new classes of items that may generate different resources. This can go on forever, but is usually limited to a set number of sections and items. They all follow this basic premise.
 
 Most of them have a button or window you can tap or click to generate resources, then eventually obtain some kind of auto-tapper that taps for you every so often. It is this feature that originally gave them the _Tapper_ name, but not all tappers have this feature.
 
