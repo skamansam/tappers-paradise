@@ -19,7 +19,7 @@ Here is a list of features from these kinds of games. Most games on the market o
 * generators start off having to be tapped. When enough money or generators are built, a timer can be started which generates resources every X interval.
 * resource generation paradigms:
   * Landlord: Start with one house that generates money, then work your way up to whole neighborhood, then city.
-  * Office: Each floor generates resources. May be capped, or may allow infinite floors.
+  * Tower: Each floor generates resources. May be capped, or may allow infinite floors.
   * Simulation: start with a small resource generator based on something IRL, then "evolve" until you get to a higher form. Generators have strict prerequisites for multiple resources and number of generators obtained. Bonuses usually do not consume resources, but have a prerequisite for number and type of generators obtained. (i.e. "spear" bonus for having 10 tree generators, 5 iron generators, and 3 training facilities)
 
 In Tapper's Paradise, these ideas are generalized as such:
@@ -28,10 +28,16 @@ In Tapper's Paradise, these ideas are generalized as such:
 * **Generator** - generates resources
 * **Universe Multiplier** - an idea for global help. you usually need to reset the universe in order to use these.
 * **Bonus Tree** - a list of bonuses to apply to generators based on certain prerequisites
-* **World** - a logical divide between generators
+* **World** - a logical divide between groups of generators
 * **Universe** - The entire game, made up of all worlds.
 * **Tapper** - a GUI object you can click or tap on to generate resources.
 * **AutoTapper** - a logical idea for something that taps the **Tapper** for you, at a predetermined time.
+
+# Designing Your Tapper
+Tapper's Paradise is a game builder for incremental games. You have nearly full control over all aspects of your universe while building it. Here is a breakdown of all the ideas and I recommend starting with a plan. What type of Tapper do you want to see? Is it based on one you like to play, but lacks certain features you want?
+
+## Where is the universe data saved?
+For now, you can fork this repo and change one of the exisitng universes to be what you want. In the future, we will have a designer which will output the json description of the universe.
 
 ## Resources
 ## Generators
@@ -47,6 +53,8 @@ In Tapper's Paradise, these ideas are generalized as such:
 ## Tapper
 
 ## AutoTapper
+
+## The Future
 
 ## Build Setup
 
