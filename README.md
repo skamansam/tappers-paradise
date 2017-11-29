@@ -17,21 +17,25 @@ Here is a list of features from these kinds of games. Most games on the market o
 * bonuses for generators based on amount of resources generated (i.e. you can buy a speed multiplier for 10 gold and 2 platinum)
 * generators may consume resources, or just require a number of resources to become active
 * generators start off having to be tapped. When enough money or generators are built, a timer can be started which generates resources every X interval.
-* resource generation paradigms:
-  * Landlord: Start with one house that generates money, then work your way up to whole neighborhood, then city.
-  * Tower: Each floor generates resources. May be capped, or may allow infinite floors.
-  * Simulation: start with a small resource generator based on something IRL, then "evolve" until you get to a higher form. Generators have strict prerequisites for multiple resources and number of generators obtained. Bonuses usually do not consume resources, but have a prerequisite for number and type of generators obtained. (i.e. "spear" bonus for having 10 tree generators, 5 iron generators, and 3 training facilities)
+* resource generation paradigms: ([see this reddit thread for more](https://www.reddit.com/r/incremental_games/comments/6jfuxq/list_of_incremental_games_by_archetype/))
+  * Factory - uses a map where you can place generators. Generators can "output" resources to other generators.
+  * Breeding - Two inital generators that generate more generators based on current values. New generators replace old ones.
+  * Landlord/Ruler: Start with one house that generates money, then work your way up to whole neighborhood, then city.
+  * Tower: Each floor generates resources. May be capped, or may allow infinite floors. (Tiny Death Star, )
+  * Collector: Start generating a single resource, then use that resource to buy items (i.e. decorations) for your room which will add bonuses to your resource generation. This style relies heavily on bonuses instead of different types of resource generators. Instead of multiple generators or bonuses, the idea is to upgrade each item to a new level insted of having multiples. ([Game Dev Tycoon](http://www.greenheartgames.com/app/game-dev-tycoon/), [PewDiePie's Tuber Simulator](https://play.google.com/store/apps/details?id=com.outerminds.tubular&hl=en))
+
+  * Civ Builder: start with a small resource generator (usually based on something IRL), then "evolve" until you get to a higher form. Generators have strict prerequisites for multiple resources and number of generators obtained. Bonuses usually do not consume resources, but have a prerequisite for number and type of generators obtained. (i.e. "spear" bonus for having 10 tree generators, 5 iron generators, and 3 training facilities)
 
 In Tapper's Paradise, these ideas are generalized as such:
 
 * **Resource** - used to purchase generators
 * **Generator** - generates resources
-* **Universe Multiplier** - an idea for global help. you usually need to reset the universe in order to use these.
+* **Universe Multiplier** - (AKA Prestige) an idea for global help. you usually need to reset the universe in order to use these.
 * **Bonus Tree** - a list of bonuses to apply to generators based on certain prerequisites
 * **World** - a logical divide between groups of generators
 * **Universe** - The entire game, made up of all worlds.
 * **Tapper** - a GUI object you can click or tap on to generate resources.
-* **AutoTapper** - a logical idea for something that taps the **Tapper** for you, at a predetermined time.
+* **AutoTapper** - a logical idea for something that activates the **Tapper** for you, at a predetermined time.
 
 # Designing Your Tapper
 Tapper's Paradise is a game builder for incremental games. You have nearly full control over all aspects of your universe while building it. Here is a breakdown of all the ideas and I recommend starting with a plan. What type of Tapper do you want to see? Is it based on one you like to play, but lacks certain features you want?
