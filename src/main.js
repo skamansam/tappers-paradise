@@ -14,7 +14,24 @@ import store from './store'
 
 Vue.use(Vuex)
 Vue.use(VueLocalStorage)
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#1b5e20',
+    secondary: '#b0bec5',
+    accent: '#8c9eff',
+    error: '#b71c1c',
+    light: {
+      primary: '#1b5e20',
+      secondary: '#b0bec5',
+      accent: '#8c9eff',
+      error: '#b71c1c'
+    },
+    dark: {
+      primary: '#003300'
+    }
+  }
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -23,6 +40,6 @@ new Vue({
   el: '#app',
   store,
   router,
-  template: '<App/>',
+  template: '<App light/>',
   components: { App }
 })
