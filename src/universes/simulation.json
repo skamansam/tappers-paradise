@@ -1,0 +1,43 @@
+{
+  "universe": {
+    "name": "Species",
+    "multipliers": [],
+    "resources": {
+      "_options": {
+        "auto_convert": true
+      },
+      "joule": {
+        "plural_name": "joules",
+        "conversions": {
+          "1000": "microjoule"
+        }
+      }
+    ]
+  },
+  "generators": [
+    {
+      // the display name of this generator
+      "name": "Cell",
+      "type": "cell", // floor,
+      "timer": false,
+      // the first one costs this
+      "base_cost": 1.00,
+      // cost is ((cost_multiplier * generators_owned) + base_cost) joules for every generator owned.
+      "cost_multiplier": 0.01,
+      // the resource name
+      "resource_cost": "joule",
+      "generates": "joule",
+      "resource_multiplier_per_tick": 1.00,
+      "prerequisites": {},
+      "visibility": "always"
+    },{
+
+    }
+  ],
+  "worlds": [],
+  "bonus_tree": {
+    "_options": {
+
+    }
+  }
+}
