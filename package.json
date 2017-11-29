@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "npm-check-updates": "^2.13.0",
     "vue": "^2.5.9",
     "vue-localstorage": "^0.5.0",
     "vue-router": "^3.0.1",
