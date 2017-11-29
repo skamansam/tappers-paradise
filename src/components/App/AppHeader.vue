@@ -1,6 +1,6 @@
 <template>
-    <v-toolbar fixed app :clipped-left="clipped">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
+    <v-toolbar light fixed app :clipped-left="clipped">
+      <v-toolbar-side-icon @click.stop="toggleDrawer" light></v-toolbar-side-icon>
       <v-btn
         icon
         light
@@ -43,16 +43,19 @@ export default {
   data () {
     return {
       // drawer: false,
-      title: 'Capitalist Playground',
+      title: 'Tapper\'s Paradise',
       miniVariant: false,
       clipped: false
     }
   },
   computed: {
-    drawer () {
+  },
+  methods: {
+    toggleDrawer () {
       debugger
-      return this.$store.app.drawer()
+      this.$store.dispatch('app_toggleMenu')
     }
+
   }
 }
 </script>

@@ -1,13 +1,13 @@
 <template>
   <v-app light>
     <app-navigation :drawer="drawer" :clipped="clipped" :mini-variant="miniVariant" :items="items"></app-navigation>
-    <app-header :mini-variant="miniVariant" :clipped="clipped"></app-header>
+    <app-header :mini-variant="miniVariant" :drawer="drawer" :clipped="clipped"></app-header>
     <main>
       <v-content>
         <v-container fluid>
           <v-slide-y-transition mode="out-in">
             <v-layout column align-center>
-              <business-tapper v-if="$route.name == 'home'"></business-tapper>
+              <income-generator v-if="$route.name == 'home'"></income-generator>
             </v-layout>
           </v-slide-y-transition>
         </v-container>
@@ -36,13 +36,13 @@
 
 <script>
   import Hello from './components/Hello.vue'
-  import BusinessTapper from './components/BusinessTapper.vue'
+  import IncomeGenerator from './components/IncomeGenerator.vue'
   import AppHeader from './components/App/AppHeader.vue'
   import AppNavigation from './components/App/AppNavigation.vue'
   // import store from './store'
 
   export default {
-    components: {Hello, BusinessTapper, AppHeader, AppNavigation},
+    components: {Hello, IncomeGenerator, AppHeader, AppNavigation},
     data () {
       return {
         // store: store,

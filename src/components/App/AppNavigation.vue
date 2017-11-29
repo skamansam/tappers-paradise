@@ -3,7 +3,7 @@
         persistent
         :mini-variant="miniVariant"
         :clipped="clipped"
-        v-model="drawer"
+        :isActive="app_drawer"
         enable-resize-watcher
         app
       >
@@ -25,15 +25,32 @@
     </template>
 
     <script>
+    import { mapGetters } from 'vuex'
+
     export default {
       name: 'app-navigation',
       data () {
         return {
-          drawer: false,
+          // drawer: false,
           clipped: false,
           miniVariant: false,
           items: {}
         }
+      },
+      methods: {
+      },
+      computed: {
+        drawer: {
+          get () {
+            return this.$store.state.app_drawer
+          },
+          set (value) {
+            this.$store.commit('APP_DRAWER_TOGGLE', value)
+          }
+        },
+        ...mapGetters([
+          'app_drawer'
+        ])
       }
     }
     </script>

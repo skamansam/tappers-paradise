@@ -1,6 +1,6 @@
 {
-  "name": "capitalist_playground",
-  "short_name": "capitalist_playground",
+  "name": "Tapper's Paradise",
+  "short_name": "Tap Paradise",
   "icons": [
     {
       "src": "img/icons/android-chrome-192x192.png",
@@ -16,5 +16,5 @@
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "theme_color": "#F174B2"
 }
