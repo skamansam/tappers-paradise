@@ -53,9 +53,6 @@
       }
     },
     watch: {
-      currentValue: function (val) {
-        this._storeValue(val)
-      },
       owned: function (val) {
         this.currentCost = (this.cost + (val * this.costPerUnit * this.costMultiplier))
         this._storeOwned(val)
@@ -87,6 +84,11 @@
         //  this._incomeLoop = setInterval(this.incrementIncome, this.speed)
         // this.startIncomeTimer()
       },
+      changeValue (changedBy) {
+        this.currentValue += changedBy
+        this.$emit('valueChanged', {value: changedBy})
+        this._storeValue(this.currentValue)
+      },
       generateIncome (fraction = 1) {
         // if progress loop is active, do nothing.
         if (this._progressLoopIsRunning) {
@@ -94,7 +96,7 @@
         }
 
         this.startProgressLoop(() => {
-          this.currentValue += (this.owned * this.income.perUnit) / fraction
+          this.changeValue((this.owned * this.income.perUnit) / fraction)
         })
       },
       startProgressLoop (cb) {
@@ -118,7 +120,7 @@
         }
         this.owned += 1
         this._storeOwned(this.owned)
-        this.currentValue -= this.currentCost
+        this.changeValue(0 - this.currentCost)
       },
       _loadData () {
         this._loadOwned()

@@ -6,6 +6,7 @@
         :isActive="app_drawer"
         enable-resize-watcher
         app
+        fixed
       >
         <v-list>
           <v-list-tile

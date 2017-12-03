@@ -1,34 +1,25 @@
-<template>
-    <v-toolbar light fixed app :clipped-left="clipped">
-      <v-toolbar-side-icon @click.stop="toggleDrawer" light></v-toolbar-side-icon>
-      <v-btn
-        icon
-        light
-        @click.stop="miniVariant = !miniVariant"
-      >
+<template class="light-blue darken-4 white--text">
+    <v-toolbar class="light-blue darken-4 white--text" fixed app :clipped-left="clipped">
+
+      <v-toolbar-side-icon class="white--text" @click.stop="toggleDrawer"></v-toolbar-side-icon>
+
+      <v-btn icon class="white--text"  @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
-      <v-btn
-        icon
-        light
-        @click.stop="clipped = !clipped"
-      >
+
+      <v-btn icon class="white--text" @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        light
-        @click.stop="fixed = !fixed"
-      >
+
+      <v-btn icon dark @click.stop="fixed = !fixed">
         <v-icon>remove</v-icon>
       </v-btn>
+
       <v-toolbar-title v-text="title"></v-toolbar-title>
+
       <v-spacer></v-spacer>
-      <v-btn
-        icon
-        light
-        @click.stop="rightDrawer = !rightDrawer"
-      >
+
+      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>

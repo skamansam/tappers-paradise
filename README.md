@@ -25,20 +25,26 @@ Here is a list of features from these kinds of games. Most games on the market o
   * Collector: Start generating a single resource, then use that resource to buy items (i.e. decorations) for your room which will add bonuses to your resource generation. This style relies heavily on bonuses instead of different types of resource generators. Instead of multiple generators or bonuses, the idea is to upgrade each item to a new level insted of having multiples. ([Game Dev Tycoon](http://www.greenheartgames.com/app/game-dev-tycoon/), [PewDiePie's Tuber Simulator](https://play.google.com/store/apps/details?id=com.outerminds.tubular&hl=en))
 
   * Civ Builder: start with a small resource generator (usually based on something IRL), then "evolve" until you get to a higher form. Generators have strict prerequisites for multiple resources and number of generators obtained. Bonuses usually do not consume resources, but have a prerequisite for number and type of generators obtained. (i.e. "spear" bonus for having 10 tree generators, 5 iron generators, and 3 training facilities)
+  * RPG - help adventurers on quests by tapping. can be idle via grinding mechanic. Bonuses are gear and stats.
+  * Progression - Start with a single generator, buy more generators and bonuses with enough currency. Most of these are Landlord/Ruler style. Progression relies heavily on bonuses and Universe Multipliers
+  * Unfolding - start with a simple game mechanic, then unveil more mechanics later when certain conditions have been met
 
-In Tapper's Paradise, these ideas are generalized as such:
+In Tapper's Paradise, these ideas are generalized as such (you can call these what you want in your game):
 
 * **Resource** - used to purchase generators
 * **Generator** - generates resources
-* **Universe Multiplier** - (AKA Prestige) an idea for global help. you usually need to reset the universe in order to use these.
+* **Prestige** - an idea for global help. you usually need to reset the universe in order to use these.
 * **Bonus Tree** - a list of bonuses to apply to generators based on certain prerequisites
 * **World** - a logical divide between groups of generators
 * **Universe** - The entire game, made up of all worlds.
 * **Tapper** - a GUI object you can click or tap on to generate resources.
 * **AutoTapper** - a logical idea for something that activates the **Tapper** for you, at a predetermined time.
+* **Monetizer** - special bonuses applied when viewing an ad or buying currency. (Will talk about how to do this in the future, but will not do so for this builder. You will never see Monetization on Tapper's Paradise, but you may on games created with it.)
 
 # Designing Your Tapper
 Tapper's Paradise is a game builder for incremental games. You have nearly full control over all aspects of your universe while building it. Here is a breakdown of all the ideas and I recommend starting with a plan. What type of Tapper do you want to see? Is it based on one you like to play, but lacks certain features you want?
+
+Tapper's Paradise minimal viable product (MVP) will be a builder for Landlord
 
 ## Where is the universe data saved?
 For now, you can fork this repo and change one of the exisitng universes to be what you want. In the future, we will have a designer which will output the json description of the universe.

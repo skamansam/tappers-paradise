@@ -2,18 +2,33 @@
   <v-app light>
     <app-navigation :drawer="drawer" :clipped="clipped" :mini-variant="miniVariant" :items="items"></app-navigation>
     <app-header :mini-variant="miniVariant" :drawer="drawer" :clipped="clipped"></app-header>
-    <main>
       <v-content>
         <v-container fluid>
           <v-slide-y-transition mode="out-in">
             <v-layout column align-center>
-              <income-generator v-if="$route.name == 'home'"></income-generator>
+              <v-container
+                  fluid
+                  style="min-height: 0;"
+                  grid-list-lg
+               >
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <v-card>
+                      <v-card-title >
+                        <h2>Current Game Title</h2>
+                        <h3>{{currentValue | currency('$')}}</h3>
+                      </v-card-title>
+                    </v-card>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <income-generator v-on:valueChanged="updateIncome" v-if="$route.name == 'home'"></income-generator>
             </v-layout>
           </v-slide-y-transition>
         </v-container>
       </v-content>
-    </main>
     <v-navigation-drawer
+      fixed
       temporary
       :right="right"
       v-model="rightDrawer"
@@ -55,7 +70,19 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Capitalist Playground'
+        title: 'Capitalist Playground',
+        currentValue: 0.00
+      }
+    },
+    filters: {
+      currency (val, symbol) {
+        return symbol + val.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+      }
+    },
+    methods: {
+      updateIncome (options) {
+        debugger
+        this.currentValue += options.value
       }
     }
   }

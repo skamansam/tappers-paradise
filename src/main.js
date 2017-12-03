@@ -27,7 +27,8 @@ Vue.use(Vuetify, {
       error: '#b71c1c'
     },
     dark: {
-      primary: '#003300'
+      primary: '#003300',
+      backgroundColor: '#003300'
     }
   }
 })
