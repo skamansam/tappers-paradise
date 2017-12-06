@@ -134,6 +134,7 @@
       },
       _loadValue () {
         this.currentValue = Number.parseInt(this.$localStorage.get('value', 0.00))
+        this.changeValue(this.currentValue)
       },
       _storeValue (val) {
         this.$localStorage.set('value', val || this.currentValue)

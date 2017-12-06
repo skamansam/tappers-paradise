@@ -1,0 +1,37 @@
+{
+  "universe": {
+    "name": "Industrial Revolution",
+    "multipliers": [],
+    "resources": {
+      "_options": {
+        "auto_convert": true
+      },
+      "buck": {
+        "plural_name": "bucks",
+        "conversions": {
+          "1,000": "megabuck",
+          "1,000,000": "ultrabuck"
+        }
+      }
+    }
+  },
+  "generators": [
+    {
+      "name": "Cell",
+      "type": "cell",
+      "timer": false,
+      "base_cost": 1.00,
+      "cost_multiplier": 0.01,
+      "resource_cost": "joule",
+      "generates": "joule",
+      "resource_multiplier_per_tick": 1.00,
+      "prerequisites": {},
+      "visibility": "always"
+    },
+    {}
+  ],
+  "worlds": [],
+  "bonus_tree": {
+    "_options": {}
+  }
+}

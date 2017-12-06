@@ -1,0 +1,38 @@
+{
+  "universe": {
+    "name": "Out of Hell",
+    "multipliers": [],
+    "initial_floor": "-1000",
+    "resources": {
+      "_options": {
+        "auto_convert": true
+      },
+      "soul": {
+        "plural_name": "souls",
+        "conversions": {
+          "1,000": "silver soul",
+          "1,000,000": "gold soul"
+        }
+      }
+    }
+  },
+  "generators": [
+    {
+      "name": "Seventh Circle",
+      "type": "floor",
+      "timer": false,
+      "base_cost": 1.00,
+      "cost_multiplier": 0.01,
+      "resource_cost": "soul",
+      "generates": "soul",
+      "resource_multiplier_per_tick": 1.00,
+      "prerequisites": {},
+      "visibility": "always"
+    },
+    {}
+  ],
+  "worlds": [],
+  "bonus_tree": {
+    "_options": {}
+  }
+}

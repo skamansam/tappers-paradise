@@ -16,9 +16,14 @@
                     <v-card>
                       <v-card-title >
                         <h2>Current Game Title</h2>
-                        <h3>{{currentValue | currency('$')}}</h3>
+                      </v-card-title>
+                      <v-card-title >
+                        <h1>{{currentValue | currency('$')}}</h1>
                       </v-card-title>
                     </v-card>
+                    <v-alert v-if="errorMessage" color="error" icon="warning" value="true">
+                      {{errorMessage}}
+                    </v-alert>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -71,7 +76,8 @@
         right: true,
         rightDrawer: false,
         title: 'Capitalist Playground',
-        currentValue: 0.00
+        currentValue: 0.00,
+        errorMessage: null
       }
     },
     filters: {
@@ -79,10 +85,23 @@
         return symbol + val.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
       }
     },
+    mounted () {
+      this.loadUniverse('/universes/landlord.json')
+    },
     methods: {
       updateIncome (options) {
-        debugger
         this.currentValue += options.value
+      },
+      loadUniverse (file) {
+        fetch(file, {
+          method: 'get'
+        }).then(this.createUniverse).catch(this.showError)
+      },
+      createUniverse (json) {
+        debugger
+      },
+      showError (err) {
+        this.errorMessage = err
       }
     }
   }
