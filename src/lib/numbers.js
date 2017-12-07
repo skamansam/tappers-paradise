@@ -17,8 +17,9 @@ export function humanReadable (n, scale = SHORT, scaleLog = 3) {
 export default humanReadable
 
 export function _places (n) {
+  console.info(Math.abs(n), Math.log10(Math.abs(n)), Math.round(Math.log10(Math.abs(n))))
   return Math.log(n) * Math.LOG10E + 1 | 0
-  //return n === 0 ? 0 : 1 + Math.round(Math.log10(Math.abs(n)))
+  //return n === 0 ? 0 : 1 + Math.floor(Math.log10(Math.abs(n)))
 }
 
 export function customScale (n, scaleFunction) {
