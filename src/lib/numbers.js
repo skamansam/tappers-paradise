@@ -2,38 +2,40 @@ export const NEW_GREEK = 0
 export const SHORT = 1
 export const LONG = 2
 
-export function humanReadable (n, scale = SHORT, scaleLog = 3) {
+export function humanReadable (n, scale = SHORT) {
   switch (scale) {
     case NEW_GREEK:
-      return customScale(n, newGreekScale, scaleLog)
+      return customScale(n, newGreekScale)
     case SHORT:
-      return customScale(n, shortScale, scaleLog)
+      return customScale(n, shortScale)
     case LONG:
-      return customScale(n, longScale, scaleLog)
+      return customScale(n, longScale)
     default:
-      return customScale(n, scale, scaleLog)
+      return customScale(n, scale)
   }
 }
 export default humanReadable
 
 export function _places (n) {
-  console.info(Math.abs(n), Math.log10(Math.abs(n)), Math.round(Math.log10(Math.abs(n))))
-  return Math.log(n) * Math.LOG10E + 1 | 0
-  //return n === 0 ? 0 : 1 + Math.floor(Math.log10(Math.abs(n)))
+  if (n < 10) {
+    return 0
+  }
+  return Math.floor(Math.log10(Math.abs(n)).toFixed(10))
 }
 
 export function customScale (n, scaleFunction) {
-  const numberLength = _places(n) - 1
-  const idx = Math.floor(numberLength / 3)
-  console.log(n, numberLength, idx)
-  return scaleFunction(n)[idx]
+  const numberLength = _places(n)
+  return scaleFunction(n, numberLength)
 }
 
 function newGreekScale (n, len) {
-  while(len > 90){
-    return
+  if (n === undefined || n < 1) {
+    return ''
   }
-  return [ '',
+  const maxNumber = 1e93 - 1
+  const maxDigits = 92
+  const idx = Math.floor(len / 3)
+  const strings = [ '',
     'Thousand', 'Million', 'Gillion',
     'Tetrillion', 'Pentillion', 'Hexillion',
     'Heptillion', 'Oktillion', 'Ennillion',
@@ -45,6 +47,14 @@ function newGreekScale (n, len) {
     'Icosipentillion', 'Icosihexillion', 'Icosiheptillion',
     'Icosioktillion', 'Icosiennillion', 'Triacontillion'
   ]
+  let result = ''
+  if (idx > strings.length - 1) {
+    let prefix = newGreekScale(n - maxNumber, len - maxDigits)
+    result = (prefix !== '' ? prefix + ' ' : '') + strings[strings.length - 1]
+  } else {
+    result = strings[idx]
+  }
+  return result
 }
 
 function shortScale (n) {
