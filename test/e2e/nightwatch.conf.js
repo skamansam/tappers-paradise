@@ -9,6 +9,7 @@ module.exports = {
 
   selenium: {
     start_process: true,
+    // start_process: false,
     server_path: require('selenium-server').path,
     host: '127.0.0.1',
     port: 4444,
@@ -31,7 +32,10 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
-        acceptSslCerts: true
+        acceptSslCerts: true,
+        chromeOptions: {
+          args: ['headless', 'no-sandbox', 'disable-gpu']
+        }
       }
     },
 
