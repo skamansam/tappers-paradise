@@ -15,7 +15,7 @@ node_js:
   - '5'
   - '4'
 before_script:
-  - npm install -g bower polymer-cli
-  - bower install
+  - npm install
+
 script:
   - xvfb-run npm test

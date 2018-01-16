@@ -122,13 +122,11 @@ export function customScale (n, scaleFunction) {
 }
 
 function newGreekScale (n, len) {
-  if (n === undefined || n < 1) {
+  if (n === undefined || n < 1000) {
     return ''
   }
-  const maxNumber = 1e93 - 1
-  const maxDigits = 92
-  const idx = Math.floor(len / 3)
-  const strings = [ '',
+  const idx = Math.floor(len / 3) - 1
+  const strings = [
     'Thousand', 'Million', 'Gillion',
     'Tetrillion', 'Pentillion', 'Hexillion',
     'Heptillion', 'Oktillion', 'Ennillion',
@@ -142,6 +140,8 @@ function newGreekScale (n, len) {
   ]
   let result = ''
   if (idx > strings.length - 1) {
+    const maxNumber = 1e90
+    const maxDigits = 90
     let prefix = newGreekScale(n - maxNumber, len - maxDigits)
     result = (prefix !== '' ? prefix + ' ' : '') + strings[strings.length - 1]
   } else {
@@ -186,31 +186,71 @@ export function findShortN(n) {
 }
 
 function shortScale(n, len) {
+  if(len == 1000) return 'Millinillion'
   if(n < 10) return ''
   if(n < 100) return 'Ten'
   if(n < 1000) return 'Hundred'
   if(len <= 10){
     return [
       'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion',
-      'Sextillion','Septillion','Octillion','Nonillion','Decillion'
+      'Sextillion', 'Septillion', 'Octillion', 'Nonillion', 'Decillion'
     ][len]
   }
-  const onesPrefix = ['', 'Un', 'duo', 'tre', 'quattuor', 'quinqua', 'se', 'septe', 'octo', 'nove']
-  const tensPrefix = ['', 'Un', 'duo', 'tre', 'quattuor', 'quinqua', 'se', 'septe', 'octo', 'nove']
-  const hundredsPrefix = ['', 'Un', 'duo', 'tre', 'quattuor', 'quinqua', 'se', 'septe', 'octo', 'nove']
+  const onesPrefix = ['', 'un', 'duo', 'tre', 'quattuor', 'quinqua', 'se', 'septe', 'octo', 'nove']
+  const tensPrefix = ['', 'deci', 'viginti', 'triginta', 'quadraginta', 'quinquaginta', 'sexaginta', 'septuaginta', 'octoginta', 'nonaginta']
+  const hundredsPrefix = ['', 'centi', 'ducenti', 'trecenti', 'quadringenti', 'quingenti', 'sescenti', 'septingenti', 'octingenti', 'nongenti']
   const triad = len % 1000
   const onesIdx = triad % 10
   const tensIdx = Math.floor(triad / 10) % 10
   const hundredsIdx = Math.floor(triad / 100)
-  console.info(len, triad, onesIdx, tensIdx, hundredsIdx)
   let extraPrefix = 'illion'
   if (len > 1000) {
     extraPrefix = shortScale(n, Math.floor(len / 1000))
   }
+  const onesTens = correctWords(onesPrefix[onesIdx], tensPrefix[tensIdx])
+  let tensHundreds = correctWords(onesTens, hundredsPrefix[hundredsIdx])
 
-  let word = `${onesPrefix[onesIdx]}${tensPrefix[tensIdx]}${hundredsPrefix[hundredsIdx]}${extraPrefix}`
-  return word
+  const lastLetter = tensHundreds[tensHundreds.length - 1]
+  if(lastLetter == 'i' || lastLetter == 'a' || lastLetter == 'o')
+    tensHundreds = tensHundreds.slice(0, tensHundreds.length - 1)
+
+  let word = `${tensHundreds}${extraPrefix}`
+  return initialCase(word)
 }
+function correctWords(prefix, suffix){
+  if(suffix == '') return prefix
+  if(prefix == '') return suffix
+
+  const treOrSe = prefix == 'se' || prefix == 'tre'
+  const lastLetter = prefix[prefix.length - 1]
+  if(lastLetter != 'e') return `${prefix}${suffix}`
+
+  const nextLetter = suffix[0]
+  let conjoiner = ''
+
+  switch (nextLetter){
+    case 'c':
+      if(treOrSe) conjoiner = 's'
+      break
+    case 'o':
+      conjoiner = 'x'
+      break
+    case 'v':
+      conjoiner = treOrSe ? 's' : 'm'
+      break
+    case 'd':
+      if(treOrSe) break
+    case 's':
+    case 'q':
+    case 't':
+      conjoiner = treOrSe ? 's' : 'n'
+  }
+  return initialCase(`${prefix}${conjoiner}${suffix}`)
+}
+function initialCase(string){
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 function oldshortScale (n, len) {
   // NOTE: 10^y = longNum ; y = log(longNum)
   //       10^(3n+3) = longNum
