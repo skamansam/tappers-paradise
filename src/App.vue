@@ -92,13 +92,18 @@
       updateIncome (options) {
         this.currentValue += options.value
       },
-      loadUniverse (file) {
+      readUniverseFile (file) {
         fetch(file, {
           method: 'get'
-        }).then(this.createUniverse).catch(this.showError)
+        }).then((response) => {
+          response.json().then(this.loadUniverse)
+        }).catch(this.showError)
       },
-      createUniverse (json) {
-        debugger
+      loadUniverse (json) {
+        // ...
+        this.loadMultipliers(json.universe)
+        this.loadWorlds(json.worlds)
+        this.loadBonusTree(json.bonuses)
       },
       showError (err) {
         this.errorMessage = err

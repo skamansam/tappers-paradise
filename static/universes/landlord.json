@@ -31,7 +31,7 @@
     {}
   ],
   "worlds": [],
-  "bonus_tree": {
+  "bonuses": {
     "_options": {}
   }
 }
