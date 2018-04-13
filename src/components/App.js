@@ -6,8 +6,6 @@ import CssBaseline from 'material-ui/CssBaseline';
 import AppNavigation from './App/AppNavigation';
 import AppHeader from './App/AppHeader';
 import GameBoard from './GameBoard';
-import Typography from 'material-ui/Typography';
-//import { withStyles } from 'material-ui/styles';
 import { theme as mainTheme } from '../themeElement';
 
 const drawerWidth = 240;
@@ -58,7 +56,7 @@ class App extends Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     return (
       <MuiThemeProvider theme={mainTheme}>

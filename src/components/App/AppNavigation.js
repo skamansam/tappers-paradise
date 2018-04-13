@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
-//import AppBar from 'material-ui/AppBar';
-//import Toolbar from 'material-ui/Toolbar';
 import List, {ListItem, ListItemIcon, ListItemText, ListSubheader} from 'material-ui/List';
-//import Typography from 'material-ui/Typography';
-//import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 //import Divider from 'material-ui/Divider';
 import Icon from 'material-ui/Icon';
@@ -26,7 +22,7 @@ const styles = theme => ({
 class AppNavigation extends Component {
   render() {
 
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     const drawer = (
       <List
@@ -75,4 +71,12 @@ class AppNavigation extends Component {
     )
   }
 }
+
+AppNavigation.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  onDrawerToggle: PropTypes.func,
+  mobileOpen: PropTypes.bool,
+};
+
 export default withStyles(styles, { withTheme: true })(AppNavigation);
