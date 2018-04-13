@@ -15,42 +15,15 @@ import Icon from 'material-ui/Icon';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-  },
-  appBar: {
-    position: 'absolute',
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  navIconHide: {
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
-  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
     [theme.breakpoints.up('md')]: {
       position: 'relative',
     },
   },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-  },
 });
 
 class AppNavigation extends Component {
-  state = {
-    mobileOpen: false,
-  };
-
-  handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
-  };
   render() {
 
     const { classes, theme } = this.props;
@@ -74,9 +47,9 @@ class AppNavigation extends Component {
         <Hidden mdUp>
           <Drawer
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={this.state.mobileOpen}
-            onClose={this.handleDrawerToggle}
+            anchor="left"
+            open={this.props.mobileOpen}
+            onClose={this.props.onDrawerToggle}
             classes={{
               paper: classes.drawerPaper,
             }}

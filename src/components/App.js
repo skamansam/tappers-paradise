@@ -64,11 +64,10 @@ class App extends Component {
       <MuiThemeProvider theme={mainTheme}>
         <CssBaseline />
         <div className={classes.root}>
-          <AppHeader onDrawerToggle="{handleDrawerToggle}"/>
-          <AppNavigation mobileOpen="{state.mobileOpen}"/>
+          <AppHeader onDrawerToggle={this.handleDrawerToggle}/>
+          <AppNavigation mobileOpen={this.state.mobileOpen} onDrawerToggle={this.handleDrawerToggle}/>
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
             <GameBoard/>
           </main>
         </div>

@@ -56,7 +56,9 @@ class AppHeader extends Component {
   };
 
   handleDrawerToggle = () => {
-    this.props.drawerHandler();
+    if(this.props.onDrawerToggle){
+      this.props.onDrawerToggle();
+    }
     this.setState({ drawerOpen: !this.state.drawerOpen });
   };
 
