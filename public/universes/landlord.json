@@ -3,11 +3,11 @@
     "name": "Industrial Revolution",
     "multipliers": [],
     "resources": {
-      "_options": {
-        "auto_convert": true
-      },
       "buck": {
+        "id": 0,
+        "icon": "attach_money ",
         "plural_name": "bucks",
+        "auto_convert": true,
         "conversions": {
           "1,000": "megabuck",
           "1,000,000": "ultrabuck"
@@ -15,22 +15,44 @@
       }
     }
   },
-  "generators": [
+  "worlds": [
     {
-      "name": "Cell",
-      "type": "cell",
-      "timer": false,
-      "base_cost": 1.00,
-      "cost_multiplier": 0.01,
-      "resource_cost": "joule",
-      "generates": "joule",
-      "resource_multiplier_per_tick": 1.00,
-      "prerequisites": {},
-      "visibility": "always"
+      "name": "The Bottom Block",
+      "id": 0,
+      "generators": [
+        {
+          "name": "Your House",
+          "type": "cell",
+          "timer": false,
+          "base_cost": 1.00,
+          "cost_multiplier": 0.01,
+          "resource_cost": "buck",
+          "generates": "buck",
+          "resource_multiplier_per_tick": 1.00,
+          "prerequisites": {},
+          "visibility": "always"
+        }
+      ]
     },
-    {}
+    {
+      "name": "The Love Shacks",
+      "id": 1,
+      "generators": [
+        {
+          "name": "Simple Shack",
+          "type": "cell",
+          "timer": false,
+          "base_cost": 1.00,
+          "cost_multiplier": 0.01,
+          "resource_cost": "buck",
+          "generates": "buck",
+          "resource_multiplier_per_tick": 1.00,
+          "prerequisites": {},
+          "visibility": "always"
+        }
+      ]
+    }
   ],
-  "worlds": [],
   "bonuses": {
     "_options": {}
   }

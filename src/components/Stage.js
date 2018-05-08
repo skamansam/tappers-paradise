@@ -5,7 +5,12 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import logo from '../img/tappers-paradise-logo.svg';
 import '../css/animations.css';
-
+import List, {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from 'material-ui/List';
+import Icon from 'material-ui/Icon'
 
 const styles = theme => ({
   logo: {
@@ -15,7 +20,7 @@ const styles = theme => ({
   header: {
     textAlign: 'center',
 //    backgroundColor: '#222',
-    height: '150px',
+//    height: '150px',
     padding: '20px',
 //    color: 'white',
   },
@@ -30,11 +35,24 @@ const styles = theme => ({
 class Stage extends Component {
 
   render() {
-    const { classes } = this.props;
+    const { classes, resources } = this.props;
+    const resourceList = (resources.keys || []).map( (rezKey) => (
+      <ListItem key={resources[rezKey].id}>
+        <ListItemIcon>
+          <Icon>{resources[rezKey].icon}</Icon>
+        </ListItemIcon>
+        <ListItemText>
+          {rezKey}
+        </ListItemText>
+      </ListItem>
+    ) );
 
     return (
-      <Paper elevation="6" className={classes.header}>
+      <Paper elevation={6} className={classes.header}>
         <img src={logo} className={classes.logo} alt="logo" />
+        <List dense>
+          {resourceList}
+        </List>
         <h1 className={classes.title}>&lt; This is where the action happens! &gt;</h1>
       </Paper>
     );
@@ -43,6 +61,7 @@ class Stage extends Component {
 Stage.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  resources: PropTypes.object,
 };
 
 export default withStyles(styles, { withTheme: true })(Stage);
