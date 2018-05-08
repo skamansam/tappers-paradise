@@ -66,29 +66,33 @@ For now, you can fork this repo and change one of the exisitng universes to be w
 
 ## The Future
 
-## Build Setup
+## Building and Running - React version
+
+There are two versions of this app - one using React and one using Vue. To change the version, use `git checkout vue` or `git checkout react`. Currently, the `master` branch uses Vue, so it should be up to date. Since you are on the React version now, these instructions are for building this app using said framework.
 
 ``` bash
 # install dependencies
-npm install
+npm install -g yarn
+yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn start
 
-# build for production with minification
-npm run build
+# build for production with minification.
+yarn build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# run tests using jest. see https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests
+yarn test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Development
+
+You are free to work on this app using react or vue, in your editor of choice. Since I use VSCode, the git repo contains the files needed for developing on VSCode.
+
+```
+Any PRs with modified VSCode files will be rejected.
+```
+
+That being said, if there is sufficient discussion around why it should be included, I may bend this rule from time to time. There is already a launch configuration for debugging in VSCode, called "Debug Chrome." This configuration requires the `Debugger for Chrome` extension to be installed. This configuration is for using VSCode's debugging tools.
+
+The other debug configuration just runs the yarn task for running a local server. This configuration is for using your browser's native debug tools, or for testing in other browsers.
