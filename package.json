@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "material-ui": "^1.0.0-beta.41",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "large-number-names": "^1.2.1",
+    "material-ui": "^1.0.0-beta.44",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -19,6 +20,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "jest": "^22.4.3",
-    "react-test-renderer": "^16.3.1"
+    "react-test-renderer": "^16.3.2"
   }
 }
