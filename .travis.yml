@@ -16,6 +16,7 @@ node_js:
   - '4'
 before_script:
   - npm install
+  - npm install yarn
 
 script:
-  - xvfb-run npm test
+  - xvfb-run yarn test
