@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IncomeGenerator from './IncomeGenerator';
 import PropTypes from 'prop-types';
 //import Typography from 'material-ui/Typography';
-import AppBar from 'material-ui/AppBar';
+//import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import { withStyles } from 'material-ui/styles';
 import Stage from './Stage';
@@ -67,10 +67,12 @@ class GameBoard extends Component {
       )
   }
 
-  addResource(rezName, rezDelta) {
+  addResource = (rezName, rezDelta,b,c) => {
+    console.log(rezName, rezDelta)
     this.setState( (prevState, _props) => {
       const newState = {...prevState};
-      newState[rezName] += rezDelta;
+      newState.totals[rezName] = newState.totals[rezName] || 0;
+      newState.totals[rezName] += rezDelta;
       return newState;
     });
   }
@@ -98,7 +100,7 @@ class GameBoard extends Component {
     const tabBar = this._buildTabs(this.state.worlds, this.state.selectedWorldId, this.onWorldChange, classes)
 
     const generators = currentWorld.generators.map( generator =>
-      (<IncomeGenerator data={generator} onClickie={this.clickie} className={classes.incomeGenerator}/>)
+      (<IncomeGenerator data={generator} onResourceChange={this.addResource} className={classes.incomeGenerator}/>)
     )
 
     return (
