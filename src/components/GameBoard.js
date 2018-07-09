@@ -3,8 +3,9 @@ import IncomeGenerator from './IncomeGenerator';
 import PropTypes from 'prop-types';
 //import Typography from 'material-ui/Typography';
 //import AppBar from 'material-ui/AppBar';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import { withStyles } from 'material-ui/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { withStyles } from '@material-ui/core/styles';
 import Stage from './Stage';
 
 
@@ -39,11 +40,11 @@ class GameBoard extends Component {
     selectedWorldId: 0
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.loadUniverse();
   }
 
-  loadUniverse() {
+  loadUniverse = () => {
     fetch(this.state.universe_url)
       .then(result => result.json())
       .then(
@@ -81,7 +82,7 @@ class GameBoard extends Component {
     this.setState( (prevState, cb) => ({ ...prevState, selectedWorldId: val }))
   }
 
-  _buildTabs(worlds, selectedId, onChangeCb, classes){
+  _buildTabs = (worlds, selectedId, onChangeCb, classes) => {
     if(worlds.length < 2) return "";
     const tabs = worlds.map( world =>
       (<Tab label={world.name} key={world.name} value={world.id} className={classes.tab}/>)
@@ -93,12 +94,12 @@ class GameBoard extends Component {
     )
   }
 
-  render() {
+  render = () => {
     const { classes } = this.props;
     const currentWorld = this.state.worlds[this.state.selectedWorldId]
 
     const tabBar = this._buildTabs(this.state.worlds, this.state.selectedWorldId, this.onWorldChange, classes)
-
+    console.log('GameBoard Resources: ', this.state.universe);
     const generators = currentWorld.generators.map( generator =>
       (<IncomeGenerator data={generator} onResourceChange={this.addResource} className={classes.incomeGenerator}/>)
     )

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-//import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
+import Paper from '@material-ui/core/Paper';
+//import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 import logo from '../img/tappers-paradise-logo.svg';
 import '../css/animations.css';
 import List, {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from 'material-ui/List';
-import Icon from 'material-ui/Icon'
+} from '@material-ui/core/List';
+import Icon from '@material-ui/core/Icon'
 
 const styles = theme => ({
   logo: {
@@ -34,8 +34,9 @@ const styles = theme => ({
 
 class Stage extends Component {
 
-  render() {
+  render = () => {
     const { classes, resources } = this.props;
+    console.log("Stage resources:", resources);
     const resourceList = (resources.keys || []).map( (rezKey) => (
       <ListItem key={resources[rezKey].id}>
         <ListItemIcon>

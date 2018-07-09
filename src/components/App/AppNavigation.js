@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import List, {ListItem, ListItemIcon, ListItemText, ListSubheader} from 'material-ui/List';
-import Hidden from 'material-ui/Hidden';
-//import Divider from 'material-ui/Divider';
-import Icon from 'material-ui/Icon';
-// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import Hidden from '@material-ui/core/Hidden';
+//import Divider from '@material-ui/core/Divider';
+import Icon from '@material-ui/core/Icon';// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 
 const drawerWidth = 240;
 
@@ -20,7 +23,7 @@ const styles = theme => ({
 });
 
 class AppNavigation extends Component {
-  render() {
+  render = () => {
 
     const { classes } = this.props;
 
