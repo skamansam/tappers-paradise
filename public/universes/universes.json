@@ -1,0 +1,23 @@
+{
+  "universes": [
+    {
+      "id":"0",
+      "name":"Pleasant Pueblo",
+      "url":"/universes/landlord.json",
+      "icon":"location_city"
+    },
+    {
+      "id":"1",
+      "name":"Industrial Revolution",
+      "url":"/universes/simulation.json",
+      "icon":"360"
+    },
+    {
+      "id":"2",
+      "name":"Out of Hell",
+      "url":"/universes/tower.json",
+      "icon":"attach_money"
+    }
+  ],
+  "favorites": []
+}

@@ -7,6 +7,11 @@ import AppNavigation from './App/AppNavigation';
 import AppHeader from './App/AppHeader';
 import GameBoard from './GameBoard';
 import { theme as mainTheme } from '../themeElement';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -59,6 +64,7 @@ class App extends Component {
     const { classes } = this.props;
 
     return (
+      <Router basename='/'>
       <MuiThemeProvider theme={mainTheme}>
         <CssBaseline />
         <div className={classes.root}>
@@ -70,6 +76,7 @@ class App extends Component {
           </main>
         </div>
       </MuiThemeProvider>
+      </Router>
     );
   }
 }

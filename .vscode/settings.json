@@ -4,5 +4,5 @@
   "editor.formatOnType": false,
   "files.associations": {
     "*.js": "javascriptreact"
-  }
+  },
 }

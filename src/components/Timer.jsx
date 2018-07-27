@@ -49,7 +49,7 @@ class Timer extends Component {
     const { data } = this.props;
     return (
       <div>
-        <LinearProgress variant="buffer" value={this.completed} valueBuffer={this.buffer} />
+        <LinearProgress variant="buffer" value={this.state.completed} valueBuffer={this.state.buffer} />
       </div>
     );
   }
@@ -59,10 +59,9 @@ Timer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   onFinish: PropTypes.function,
-  onCountDownFinish: PropTypes.function,
-  displayCount: PropTypes.boolean,
-  displayPercentage: PropTypes.boolean,
-  started: PropTypes.boolean
+  displayCount: PropTypes.bool,
+  displayPercentage: PropTypes.bool,
+  started: PropTypes.bool
 };
 
 

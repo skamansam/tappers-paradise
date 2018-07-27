@@ -1,6 +1,7 @@
 {
+  "id": 0,
   "universe": {
-    "name": "Industrial Revolution",
+    "name": "Pleasant Pueblo",
     "multipliers": [],
     "resources": {
       "buck": {
@@ -21,6 +22,7 @@
       "id": 0,
       "generators": [
         {
+          "id": 0,
           "name": "Your House",
           "type": "cell",
           "timer": false,

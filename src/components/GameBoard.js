@@ -44,6 +44,10 @@ class GameBoard extends Component {
     this.loadUniverse();
   }
 
+  componentWillReceiveProps = (newProps) => {
+    this.setState({ universe_url: newProps.universe_url })
+  }
+
   loadUniverse = () => {
     fetch(this.state.universe_url)
       .then(result => result.json())
@@ -101,7 +105,7 @@ class GameBoard extends Component {
     const tabBar = this._buildTabs(this.state.worlds, this.state.selectedWorldId, this.onWorldChange, classes)
     console.log('GameBoard Resources: ', this.state.universe);
     const generators = currentWorld.generators.map( generator =>
-      (<IncomeGenerator data={generator} onResourceChange={this.addResource} className={classes.incomeGenerator}/>)
+      (<IncomeGenerator data={generator} key={generator.id} onResourceChange={this.addResource} className={classes.incomeGenerator}/>)
     )
 
     return (
