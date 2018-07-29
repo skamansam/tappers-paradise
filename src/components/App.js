@@ -7,11 +7,7 @@ import AppNavigation from './App/AppNavigation';
 import AppHeader from './App/AppHeader';
 import GameBoard from './GameBoard';
 import { theme as mainTheme } from '../themeElement';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const drawerWidth = 240;
 

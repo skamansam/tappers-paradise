@@ -10,11 +10,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Hidden from '@material-ui/core/Hidden';
 //import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 
@@ -78,8 +74,8 @@ class AppNavigation extends Component {
     const { classes, match } = this.props;
 
     const items = this.state.universes.map( universe =>
-      (<NavLink activeClassName={classes.currentPage} to={`/universes/${universe.id}`} style={{ textDecoration: 'none', display: 'block' }}>
-      <ListItem key={universe.id} button>
+      (<NavLink key={universe.id} activeClassName={classes.currentPage} to={`/universes/${universe.id}`} style={{ textDecoration: 'none', display: 'block' }}>
+      <ListItem button>
         <ListItemIcon>
           <Icon>{universe.icon}</Icon>
         </ListItemIcon>

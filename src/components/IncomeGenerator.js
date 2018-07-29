@@ -42,7 +42,7 @@ class IncomeGenerator extends Component {
 IncomeGenerator.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  onResourceChange: PropTypes.function,
+  onResourceChange: PropTypes.func,
   name: PropTypes.string
 };
 

@@ -103,7 +103,7 @@ class GameBoard extends Component {
     const currentWorld = this.state.worlds[this.state.selectedWorldId]
 
     const tabBar = this._buildTabs(this.state.worlds, this.state.selectedWorldId, this.onWorldChange, classes)
-    console.log('GameBoard Resources: ', this.state.universe);
+    console.log('GameBoard Resources: ', this.state.universe, this.addResource);
     const generators = currentWorld.generators.map( generator =>
       (<IncomeGenerator data={generator} key={generator.id} onResourceChange={this.addResource} className={classes.incomeGenerator}/>)
     )

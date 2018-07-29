@@ -58,7 +58,7 @@ class Timer extends Component {
 Timer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  onFinish: PropTypes.function,
+  onFinish: PropTypes.func,
   displayCount: PropTypes.bool,
   displayPercentage: PropTypes.bool,
   started: PropTypes.bool
