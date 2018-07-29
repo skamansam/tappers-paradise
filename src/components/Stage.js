@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
@@ -33,14 +34,19 @@ const styles = theme => ({
 });
 
 class Stage extends Component {
-
+  state = {
+    resources: {},
+    universeName: ''
+  }
+  componentWillReceiveProps = (newProps) => {
+    this.setState({resources: newProps.resources, universeName: newProps.universeName})
+  }
   render = () => {
-    const { classes, resources } = this.props;
-    console.log("Stage resources:", resources);
-    const resourceList = (resources.keys || []).map( (rezKey) => (
-      <ListItem key={resources[rezKey].id}>
+    const { classes } = this.props;
+    const resourceList = (this.state.resources.keys || []).map( (rezKey) => (
+      <ListItem key={this.state.resources[rezKey].id}>
         <ListItemIcon>
-          <Icon>{resources[rezKey].icon}</Icon>
+          <Icon>{this.state.resources[rezKey].icon}</Icon>
         </ListItemIcon>
         <ListItemText>
           {rezKey}
@@ -54,7 +60,7 @@ class Stage extends Component {
         <List dense>
           {resourceList}
         </List>
-        <h1 className={classes.title}>&lt; This is where the action happens! &gt;</h1>
+        <h1 className={classes.title}>{this.state.universeName}</h1>
       </Paper>
     );
   }

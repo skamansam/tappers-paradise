@@ -71,10 +71,10 @@ class AppNavigation extends Component {
   
 
   render = () => {
-    const { classes, match } = this.props;
+    const { classes } = this.props;
 
     const items = this.state.universes.map( universe =>
-      (<NavLink key={universe.id} activeClassName={classes.currentPage} to={`/universes/${universe.id}`} style={{ textDecoration: 'none', display: 'block' }}>
+      (<NavLink key={universe.id} activeClassName={classes.currentPage} to={`/universes/${universe.id}`} onClick={() => this.props.onNavigationChange(universe.url)} style={{ textDecoration: 'none', display: 'block' }}>
       <ListItem button>
         <ListItemIcon>
           <Icon>{universe.icon}</Icon>
@@ -132,7 +132,8 @@ AppNavigation.propTypes = {
   mobileOpen: PropTypes.bool,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  onNavigationChange: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(withRouter(AppNavigation));

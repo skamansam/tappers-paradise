@@ -51,10 +51,16 @@ const styles = theme => ({
 class App extends Component {
   state = {
     mobileOpen: false,
+    universe_url: '/universes/landlord.json'
   };
 
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
+  };
+
+  setUniverseUrl = (url) => {
+    console.info(`App: Loading URL: ${url}`)
+    this.setState({universe_url: url})
   };
 
   render() {
@@ -66,10 +72,10 @@ class App extends Component {
         <CssBaseline />
         <div className={classes.root}>
           <AppHeader onDrawerToggle={this.handleDrawerToggle}/>
-          <AppNavigation mobileOpen={this.state.mobileOpen} onDrawerToggle={this.handleDrawerToggle}/>
+          <AppNavigation mobileOpen={this.state.mobileOpen} onDrawerToggle={this.handleDrawerToggle} onNavigationChange={this.setUniverseUrl}/>
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <GameBoard/>
+            <GameBoard universe_url={this.state.universe_url}/>
           </main>
         </div>
       </MuiThemeProvider>
