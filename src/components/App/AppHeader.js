@@ -54,7 +54,7 @@ class AppHeader extends Component {
           >
             <Icon>menu</Icon>
           </IconButton>
-          <Typography variant="title" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap>
             {this.state.title}
           </Typography>
         </Toolbar>
