@@ -12,44 +12,52 @@ const styles = theme => ({
   }
 });
 class Timer extends Component {
+  state = {
+    completed: 0,
+    buffer: 0,
+    tickDuration: 100
+  }
+  timer = null;
 
-  constructor(){
-    super();
-    this.state = {
-      completed: 0,
-      itemsPerComplete: 1,
-      buffer: 0,
-      duration: 5000,
-      tickDuration: 500
-    }
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   componentDidMount = () => {
-    if(this.props.started){
-      this.timer = setInterval(this.progress, 500);
-    }
+    this._handleTimerUpdates();
   }
 
-  componentWillReceiveProps = (newProps) => {
-    this.setState({started: newProps.started, duration: newProps.duration, tickDuration: newProps.tickDuration})
+  _handleTimerUpdates = () => {
+    if(this.props.started && this.timer == null){
+      this.timer = setInterval(this.progress, this.state.tickDuration);
+    }else if(!this.props.started){
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+  componentDidUpdate = (prevProps, prevState, snapshot) => {
+    this._handleTimerUpdates();
   }
 
   progress = () => {
     const { completed } = this.state;
-    const nextTickValue = this.state.duration / this.state.tickDuration
+    const nextTickValue = this.props.duration / this.state.tickDuration
     if (completed >= 100) {
-      this.setState({ completed: 0 });
-      this.onFinish();
+      this.setState({ completed: 0 }, () => this.props.onFinish() );
     } else {
-      this.setState({ completed: completed + nextTickValue});
+      this.setState({ completed: completed + nextTickValue})
     }
   };
 
   render() {
-    const { data } = this.props;
+    const {completed, buffer} = this.state;
+    const label = (
+      <label>{completed}</label>
+    )
     return (
       <div>
-        <LinearProgress variant="buffer" value={this.state.completed} valueBuffer={this.state.buffer} />
+        {label}
+        <LinearProgress variant="determinate" value={completed} valueBuffer={buffer} />
       </div>
     );
   }
@@ -61,7 +69,8 @@ Timer.propTypes = {
   onFinish: PropTypes.func,
   displayCount: PropTypes.bool,
   displayPercentage: PropTypes.bool,
-  started: PropTypes.bool
+  started: PropTypes.bool,
+  duration: PropTypes.number
 };
 
 

@@ -38,7 +38,7 @@ class GameBoard extends Component {
     }],
     bonuses: [],
     errors: "",
-    totals: [],
+    totals: {},
     selectedWorldId: 0
   }
 
@@ -82,12 +82,15 @@ class GameBoard extends Component {
       )
   }
 
-  addResource = (rezName, rezDelta,b,c) => {
+  addResource = (rezName, rezDelta) => {
     console.log(rezName, rezDelta)
     this.setState( (prevState, _props) => {
       const newState = {...prevState};
-      newState.totals[rezName] = newState.totals[rezName] || 0;
+      if(!newState.totals[rezName]){
+        newState.totals[rezName] = 0;
+      }
       newState.totals[rezName] += rezDelta;
+      console.log("GameBoard: Setting New State:", newState.totals[rezName], newState)
       return newState;
     });
   }
@@ -119,7 +122,7 @@ class GameBoard extends Component {
 
     return (
       <div className={classes.root}>
-        <Stage resources={this.state.universe.resources} universeName={this.state.universe.name} className={classes.stage}/>
+        <Stage resources={this.state.universe.resources} totals={this.state.totals} universeName={this.state.universe.name} className={classes.stage}/>
         {tabBar}
         {generators}
       </div>

@@ -36,10 +36,12 @@ const styles = theme => ({
 class Stage extends Component {
   state = {
     resources: {},
-    universeName: ''
+    universeName: '',
+    totals: {}
   }
   componentWillReceiveProps = (newProps) => {
-    this.setState({resources: newProps.resources, universeName: newProps.universeName})
+    console.log("Stage: receiving new props", newProps)
+    this.setState({resources: newProps.resources, totals: newProps.totals, universeName: newProps.universeName})
   }
   render = () => {
     const { classes } = this.props;

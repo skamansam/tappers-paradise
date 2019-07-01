@@ -25,7 +25,13 @@
           "id": 0,
           "name": "Your House",
           "type": "cell",
-          "timer": false,
+          "timer": {
+            "initialValue": 3000,
+            "intervals": [
+              2,4,8,16,32,64,128,256,512,1024
+            ],
+            "intervalType": "binary"
+          },
           "base_cost": 1.00,
           "cost_multiplier": 0.01,
           "resource_cost": "buck",
