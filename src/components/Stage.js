@@ -6,11 +6,10 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import logo from '../img/tappers-paradise-logo.svg';
 import '../css/animations.css';
-import List, {
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core/List';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import List from '@material-ui/core/List';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
 import Icon from '@material-ui/core/Icon'
 
 const styles = theme => ({
@@ -31,6 +30,13 @@ const styles = theme => ({
   intro: {
     fontSize: 'large',
   },
+  resourceValue: {
+    color: '#00aa00',
+  },
+  resourceName: {
+    color: '#00aa00',
+    paddingLeft: '1ex'
+  }
 });
 
 class Stage extends Component {
@@ -40,22 +46,26 @@ class Stage extends Component {
     totals: {}
   }
   componentWillReceiveProps = (newProps) => {
-    console.log("Stage: receiving new props", newProps)
-    this.setState({resources: newProps.resources, totals: newProps.totals, universeName: newProps.universeName})
+    this.setState({
+      resources: newProps.resources,
+      totals: newProps.totals,
+      universeName: newProps.universeName
+    })
   }
   render = () => {
-    const { classes } = this.props;
-    const resourceList = (this.state.resources.keys || []).map( (rezKey) => (
-      <ListItem key={this.state.resources[rezKey].id}>
+    const { classes, resources, totals } = this.props;
+    const resourceKeys = Object.keys(resources) || []
+    const resourceList = resourceKeys.map( (rezKey) => (
+      <ListItem key={resources[rezKey].id}>
         <ListItemIcon>
-          <Icon>{this.state.resources[rezKey].icon}</Icon>
+          <Icon>{resources[rezKey].icon}</Icon>
         </ListItemIcon>
         <ListItemText>
-          {rezKey}
+          <span className={classes.resourceValue}>{totals[rezKey] || 0.00}</span>
+          <span className={classes.resourceName}>{resources[rezKey].plural_name}</span>
         </ListItemText>
       </ListItem>
     ) );
-
     return (
       <Paper elevation={6} className={classes.header}>
         <img src={logo} className={classes.logo} alt="logo" />

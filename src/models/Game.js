@@ -1,6 +1,20 @@
-{
+import { Model, fk, many, attr } from 'redux-orm';
+
+export default class Game extends Model {
+  modelName = 'Game'
+  fields = {
+      id: attr(), // non-relational field for any value; optional but highly recommended
+      name: attr(),
+      author: fk('Author','universe')
+  }
+  toString() {
+      return `Game: ${this.name}`;
+  }
+}
+
+const BoardJSON = {
   "id": 0,
-  "universe": {
+  "universes": {
     "name": "Pleasant Pueblo",
     "multipliers": [],
     "resources": {

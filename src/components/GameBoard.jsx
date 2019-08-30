@@ -24,6 +24,9 @@ const styles = theme => ({
   },
   tab:{
 
+  },
+  incomeGenerator: {
+    marginBottom: '30px'
   }
 });
 
@@ -83,14 +86,15 @@ class GameBoard extends Component {
   }
 
   addResource = (rezName, rezDelta) => {
-    console.log(rezName, rezDelta)
+    //console.log(rezName, rezDelta)
     this.setState( (prevState, _props) => {
       const newState = {...prevState};
       if(!newState.totals[rezName]){
         newState.totals[rezName] = 0;
       }
       newState.totals[rezName] += rezDelta;
-      console.log("GameBoard: Setting New State:", newState.totals[rezName], newState)
+      //console.log("GameBoard: Setting New State:", newState.totals[rezName], newState)
+      this.forceUpdate();
       return newState;
     });
   }

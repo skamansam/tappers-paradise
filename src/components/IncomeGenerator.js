@@ -20,7 +20,9 @@ class IncomeGenerator extends Component {
     produces: {
       unit: 'buck',
       value: 1.25
-    }
+    },
+    owned: 0,
+    last_updated: false
   }
   
   buildResource = () =>{
@@ -30,7 +32,16 @@ class IncomeGenerator extends Component {
   addResource = () => {
     this.props.onResourceChange(this.state.produces.unit, this.state.produces.value);
     // console.info("Generator Data: ", this.props.data)
-    this.setState({buildStarted: true});
+    this.setState({buildStarted: true, last_updated: new Date()});
+  }
+
+  componentDidMount = () => {
+    const num_seconds = new Date().getTime() - new Date(this.state.last_updated)
+    this.props.onResourceChange(this.state.produces.unit, this._calculateValueOverTime(num_seconds));
+  }
+
+  _calculateValueOverTime = (num_seconds) => {
+    return this.state.owned * this.state.produces.value * num_seconds
   }
 
   render() {

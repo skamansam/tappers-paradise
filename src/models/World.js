@@ -1,6 +1,28 @@
-{
+import { Model, fk, many, attr } from 'redux-orm';
+
+export default class World extends Model {
+  modelNmae = 'World'
+  fields = {
+      id: attr(), // non-relational field for any value; optional but highly recommended
+      name: attr(),
+      // foreign key field
+      universeId: fk({
+          to: 'Universe',
+          as: 'world',
+          relatedName: 'world',
+      }),
+      generators: many('Generator', 'world'),
+      bonuses: many('Bonus', 'world')
+  }
+  toString() {
+      return `World: ${this.name}`;
+  }
+  // Declare any static or instance methods you need.
+}
+
+const BoardJSON = {
   "id": 0,
-  "universe": {
+  "universes": {
     "name": "Pleasant Pueblo",
     "multipliers": [],
     "resources": {
